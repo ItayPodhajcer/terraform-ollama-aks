@@ -87,7 +87,7 @@ resource "helm_release" "ollama" {
     "${templatefile("${path.module}/ollama-values.tpl", {
       tag            = var.ollama_tag
       port           = var.ollama_port
-      resource_group = module.cluster.node_resource_group
+      resource_group = azurerm_resource_group.this.name
       ip_address     = azurerm_public_ip.this.ip_address
       dns_label_name = local.ollama_service_name
     })}"
